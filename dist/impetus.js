@@ -33,6 +33,8 @@
 		var _ref$bounce = _ref.bounce;
 		var bounce = _ref$bounce === undefined ? true : _ref$bounce;
 		var lockAxis = _ref.lockAxis;
+		var _ref$bubble = _ref.bubble;
+		var bubble = _ref$bubble === undefined ? true : _ref$bubble;
 		var changedCallback = _ref.changed;
 
 		_classCallCheck(this, Impetus);
@@ -199,6 +201,7 @@
    */
 		function onMove(ev) {
 			ev.preventDefault();
+			if (!bubble) ev.stopImmediatePropagation();
 			var event = normalizeEvent(ev);
 			currentEvent = 'update';
 			if (changedCallback) callChangedCallback();

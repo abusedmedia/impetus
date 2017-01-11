@@ -15,6 +15,7 @@ export default class Impetus {
 		boundY,
 		bounce = true,
 		lockAxis,
+		bubble = true,
 		changed: changedCallback
 	}) {
 		var boundXmin, boundXmax, boundYmin, boundYmax, pointerLastX, pointerLastY, pointerCurrentX, pointerCurrentY, pointerId, decVelX, decVelY;
@@ -180,6 +181,7 @@ export default class Impetus {
 		 */
 		function onMove(ev) {
 			ev.preventDefault();
+			if(!bubble) ev.stopImmediatePropagation();
 			var event = normalizeEvent(ev);
 			currentEvent = 'update'
 			if(changedCallback) callChangedCallback()
